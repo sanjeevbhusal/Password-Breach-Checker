@@ -1,5 +1,6 @@
 import requests
 import hashlib
+import sys
 
 class InvalidQueryException(Exception):
     pass
@@ -23,4 +24,18 @@ def call_api(query_char):
 
 def hash_string(string):
     return hashlib.sha1(string.encode("utf-8")).hexdigest().upper()
+    
+    
+def check_password_breach(password):
+    hashed_pw = hash_string(password)
+    query_char = hashed_pw[:5]
+    tail = hashed_pw[5:]
+    
+    response = call_api(query_char)
+    hashes_list = response.text.splitlines()
+    
+    breached_count = get_breach_count(tail, hashes_list)
+    return int(breached_count)        
+ 
+        
     

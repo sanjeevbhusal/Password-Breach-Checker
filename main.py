@@ -37,5 +37,22 @@ def check_password_breach(password):
     breached_count = get_breach_count(tail, hashes_list)
     return int(breached_count)        
  
+def main(passwords_to_check): 
+    try:
+        for password in passwords_to_check:
+            breached_count = check_password_breach(password)
+            if breached_count > 0:
+                print(f"{password} was found breached {breached_count} times. You should consider chaning your password.")
+            else:
+                print(f"Congratulations! Your password {password} was not breached in any data leaks")
+    except InvalidQueryException as e:
+        print(e.args[0])
         
+    print("Completed")
+    
+
+if __name__ == "__main__":
+    main(sys.argv[1:])
+
+#Improvement: Instead of command prompt, try getting password from a text file
     

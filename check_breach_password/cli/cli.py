@@ -22,7 +22,6 @@ class CLI(click.MultiCommand):
                 continue
 
             available_commands.append(command_file.split(".")[0])
-
         return sorted(available_commands)
 
     def get_command(self, ctx, name):
@@ -32,6 +31,8 @@ class CLI(click.MultiCommand):
            :param name: Command name
            :return: Information about the command
         """
+        if name != "check":
+            return
 
         ns = {}
         command_file_location = os.path.join(command_files_location, name + ".py")

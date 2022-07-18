@@ -3,9 +3,10 @@
 This simple project checks if the user's password was breached in any data leaks using API from haveibeenpwned.com
 
 There are 2 ways to use the application.
-1) By installing the package from PyPi and running command "breach facebook123" from command line.
+1) By installing the package from PyPi(pip install password-breach-CLI) and running command "breach facebook123" from command line.
 2) Simply clone the repository and install the required packages available in requirements.txt. 
    Then run python main " facebook123 "
+https://pypi.org/project/password-breach-CLI/1.0/
 
 Just replace any word you wish to check with  "facebook123"
 

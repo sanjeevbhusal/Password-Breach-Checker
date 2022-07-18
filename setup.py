@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 # name: Name of the package to be uploaded in PyPi
 # version: Version of the current package.
@@ -10,16 +10,21 @@ from setuptools import setup
 # To install the local package, run "pip install --editable ."
 
 setup(
-    name="dice-CLI",
+    name="password-breach-CLI",
     version='1.0',
-    packages=['cli', 'cli.commands'],
-    include_package_data=True,
-    install_requires=[
-        'click'
-    ],
+    author='Sanjeev Bhusal',
+    author_email='bhusalsanjeev23@gmail.com',
+    description='Check if a password has been breached in all registered data leaks',
+    long_description="It is a command line application which accepts a password as a parameter and checks how many "
+                     "times the password was present in a data breach",
+    long_description_content_type="text/markdown",
+    packages = find_packages(),
+    install_requires=['click'],
+    keywords=['python', 'click', 'password-breach', 'pwnedpasswords'],
+
     entry_points={
         'console_scripts': [
-            'breach = cli.cli:cli'
+            'breach = check_breach_password.cli.cli:cli'
         ]
     }
 )
